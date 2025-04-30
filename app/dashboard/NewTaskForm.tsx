@@ -33,16 +33,22 @@ export default function NewTaskForm() {
     };
 
     return (
-        <form onSubmit={handleCreate} className="mb-6 flex gap-2">
+        <form onSubmit={handleCreate} className="mb-6 flex items-center gap-4 bg-orange-50 p-4 rounded-lg shadow">
             <input 
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Título de la tarea"
-                className="border rounded px-2 py-1 flex-1"
+                className="border border-orange-300 rounded px-3 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 required
                 disabled={loading}
             />
-            <button type="submit" className="bg-blue-600 text-white px-4 py-1 rounded" disabled={loading}>
+            <button 
+                type="submit" 
+                className={`px-4 py-2 rounded text-white ${
+                    loading ? 'bg-gray-400' : 'bg-orange-600 hover:bg-orange-700'
+                }`} 
+                disabled={loading}
+            >
                 {loading ? 'Añadiendo...' : 'Añadir Tarea'}
             </button>
             {error && <span className="text-red-500 ml-2">{error}</span>}

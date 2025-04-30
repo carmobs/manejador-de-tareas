@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import NewTaskForm from './NewTaskForm';
 import TaskItem from './TaskItem';
+import LogoutButton from './LogoutButton';
 
 const prisma = new PrismaClient();
 
@@ -25,16 +26,18 @@ export default async function Dashboard() {
     });
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4">Panel de Control</h1>
+        <div className="min-h-screen p-6 bg-orange-100">
+            <div className="flex justify-between items-center mb-4">
+                <h1 className="text-2xl font-bold text-orange-600">AdMINISTRADOR DE TAREAS</h1>
+                <LogoutButton />
+            </div>
+            <p className="text-gray-700 mb-4">Bienvenido, {session.user.name}!  Aqui podras gestionar tus tareas</p>
             <NewTaskForm />
-            <ul className="space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {tasks.map((t: { id: number; title: string }) => (
-                    <li key={t.id} className="p-3 bg-white rounded-lg shadow">
-                        <TaskItem id={t.id} title={t.title} />
-                    </li>
+                    <TaskItem key={t.id} id={t.id} title={t.title} />
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

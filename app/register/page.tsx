@@ -37,54 +37,62 @@ export default function Register() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h1 className="text-2xl font-bold mb-6">Registro</h1>
-      
-      {error && (
-        <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
-          {error}
-        </div>
-      )}
-
-      <form onSubmit={handleRegister} className="space-y-4">
-        <div>
-          <label className="block mb-1">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-orange-100">
+      <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
+        <h1 className="text-2xl font-bold mb-6 text-orange-600">Registro</h1>
         
-        <div>
-          <label className="block mb-1">Contraseña</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded"
-            minLength={8}
-            required
-          />
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleRegister} className="space-y-4">
+          <div>
+            <label className="block mb-1">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-2 border rounded"
+              required
+            />
+          </div>
+          
+          <div>
+            <label className="block mb-1">Contraseña</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2 border rounded"
+              minLength={8}
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full p-2 rounded text-white ${
+              loading ? 'bg-gray-400' : 'bg-orange-600 hover:bg-orange-700'
+            }`}
+          >
+            {loading ? 'Registrando...' : 'Registrarse'}
+          </button>
+        </form>
+
+        <div className="mt-4 text-center">
+          <Link href="/login" className="text-orange-600 hover:underline">
+            ¿Ya tienes cuenta? Inicia sesión
+          </Link>
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className={`w-full p-2 rounded text-white ${
-            loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
-          }`}
-        >
-          {loading ? 'Registrando...' : 'Registrarse'}
-        </button>
-      </form>
-
-      <div className="mt-4 text-center">
-        <Link href="/login" className="text-blue-600 hover:underline">
-          ¿Ya tienes cuenta? Inicia sesión
-        </Link>
+        <div className="mt-2 text-center">
+          <Link href="/" className="text-orange-600 hover:underline">
+            Volver al inicio
+          </Link>
+        </div>
       </div>
     </div>
   );
