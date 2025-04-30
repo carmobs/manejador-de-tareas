@@ -4,7 +4,9 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-orange-100">
-      <h1 className="text-4xl font-bold mb-4 text-orange-600">Gestor de Tareas</h1>
+      <div className="bg-white shadow-lg rounded-lg p-8 mb-8 text-center">
+        <h1 className="text-5xl font-extrabold text-orange-600">Gestor de Tareas / Task Manager</h1>
+      </div>
       <p className="text-lg text-gray-700 mb-8 text-center">
         Bienvenido a tu gestor de tareas. Organiza tus pendientes y mejora tu productividad.
       </p>

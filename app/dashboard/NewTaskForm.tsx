@@ -23,7 +23,7 @@ export default function NewTaskForm() {
                 setError(data.error || 'Error al crear la tarea');
             } else {
                 setTitle("");
-                router.refresh(); // Refresca el dashboard para mostrar la nueva tarea
+                router.refresh(); 
             }
         } catch {
             setError('Error al crear la tarea');
@@ -33,11 +33,15 @@ export default function NewTaskForm() {
     };
 
     return (
-        <form onSubmit={handleCreate} className="mb-6 flex items-center gap-4 bg-orange-50 p-4 rounded-lg shadow">
+        <form 
+            onSubmit={handleCreate} 
+            className="mb-6 flex items-center gap-4 bg-orange-50 p-4 rounded-lg shadow mr-auto" 
+            style={{ maxWidth: '60%' }}
+        >
             <input 
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="Título de la tarea"
+                placeholder="Ingresa una nueva tarea"
                 className="border border-orange-300 rounded px-3 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 required
                 disabled={loading}

@@ -11,12 +11,11 @@ const prisma = new PrismaClient();
 export default async function Dashboard() {
     const session = await getServerSession(authOptions);
     console.log('[DASHBOARD] session:', session);
-    // Redirige si no hay sesión
+
     if (!session?.user?.email) {
         redirect('/login');
     }
 
-    // Obtiene las tareas del usuario
     const tasks = await prisma.task.findMany({
         where: { 
             user: { 
@@ -28,7 +27,7 @@ export default async function Dashboard() {
     return (
         <div className="min-h-screen p-6 bg-orange-100">
             <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold text-orange-600">AdMINISTRADOR DE TAREAS</h1>
+                <h1 className="text-2xl font-bold text-orange-600">ADMINISTRADOR DE TAREAS</h1>
                 <LogoutButton />
             </div>
             <p className="text-gray-700 mb-4">Bienvenido, {session.user.name}!  Aqui podras gestionar tus tareas</p>

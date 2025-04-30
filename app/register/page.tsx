@@ -66,7 +66,7 @@ export default function Register() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-2 border rounded"
-              minLength={8}
+              minLength={4}
               required
             />
           </div>
@@ -84,7 +84,7 @@ export default function Register() {
 
         <div className="mt-4 text-center">
           <Link href="/login" className="text-orange-600 hover:underline">
-            ¿Ya tienes cuenta? Inicia sesión
+            Inicia sesión, si es que ya tienes cuenta
           </Link>
         </div>
 

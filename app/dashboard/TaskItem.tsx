@@ -14,7 +14,7 @@ export default function TaskItem({ id, title }: TaskItemProps) {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  // Eliminar tarea
+  // Eliminar las diferentes tareas
   const handleDelete = async () => {
     if (!confirm("¿Seguro que quieres eliminar esta tarea?")) return;
     setLoading(true);
@@ -38,7 +38,7 @@ export default function TaskItem({ id, title }: TaskItemProps) {
     }
   };
 
-  // Guardar edición
+  // edicion de las tareas
   const handleEdit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
